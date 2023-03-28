@@ -16,7 +16,8 @@ public class CustomerService {
     private CustomerRepository customerRepository;
     
     public List<Customer> findAll() {
-        return customerRepository.findAll();
+        //return customerRepository.findAll();
+        return customerRepository.customFindAll();
     }
     
     public Optional<Customer> findById(Long id) {
