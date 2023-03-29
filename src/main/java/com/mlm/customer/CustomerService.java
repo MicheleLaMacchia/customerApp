@@ -16,8 +16,15 @@ public class CustomerService {
     private CustomerRepository customerRepository;
     
     public List<Customer> findAll() {
-        //return customerRepository.findAll();
-        return customerRepository.customFindAll();
+        return customerRepository.findAll();
+    }
+    
+    public List<Customer> customFindAll() {
+    	return customerRepository.customFindAllWNativeQuery();
+    }
+    
+    public List<Customer> criteriaFindAll() {
+    	return customerRepository.customFindAllWCriteria();
     }
     
     public Optional<Customer> findById(Long id) {

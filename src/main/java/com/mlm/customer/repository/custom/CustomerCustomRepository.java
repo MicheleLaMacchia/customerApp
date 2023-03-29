@@ -6,6 +6,8 @@ import com.mlm.customer.repository.model.Customer;
 
 public interface CustomerCustomRepository {
 
-	public List<Customer> customFindAll();
+	public List<Customer> customFindAllWNativeQuery();
+	
+	public List<Customer> customFindAllWCriteria();
 	
 }

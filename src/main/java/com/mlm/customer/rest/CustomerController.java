@@ -33,6 +33,18 @@ public class CustomerController {
         List<Customer> customers = customerService.findAll();
         return new ResponseEntity<>(customers, HttpStatus.OK);
     }
+    
+    @RequestMapping(path = "custom-native/customers", method = RequestMethod.GET)
+    public ResponseEntity<List<Customer>> customGetAllCustomers() {
+    	List<Customer> customers = customerService.customFindAll();
+    	return new ResponseEntity<>(customers, HttpStatus.OK);
+    }
+    
+    @RequestMapping(path = "custom-criteria/customers", method = RequestMethod.GET)
+    public ResponseEntity<List<Customer>> criteriaGetAllCustomers() {
+    	List<Customer> customers = customerService.criteriaFindAll();
+    	return new ResponseEntity<>(customers, HttpStatus.OK);
+    }
 
     @RequestMapping(path = "customer/{id}", method = RequestMethod.GET)
     public ResponseEntity<Customer> getCustomerById(@PathVariable Long id) {
