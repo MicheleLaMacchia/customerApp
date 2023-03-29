@@ -34,6 +34,14 @@ public class CustomerController {
         return new ResponseEntity<>(customers, HttpStatus.OK);
     }
     
+    @RequestMapping(path = "customers/between/{minAge}/{maxAge}", method = RequestMethod.GET)
+    public ResponseEntity<List<Customer>> getCustomersBetweenAges(
+    		@PathVariable(name = "minAge") int minAge, 
+    		@PathVariable(name = "maxAge") int maxAge) {
+    	List<Customer> customers = customerService.findBetweenAges(minAge, maxAge);
+    	return new ResponseEntity<>(customers, HttpStatus.OK);
+    }
+    
     @RequestMapping(path = "custom-native/customers", method = RequestMethod.GET)
     public ResponseEntity<List<Customer>> customGetAllCustomers() {
     	List<Customer> customers = customerService.customFindAll();

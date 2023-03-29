@@ -27,6 +27,10 @@ public class CustomerService {
     	return customerRepository.customFindAllWCriteria();
     }
     
+    public List<Customer> findBetweenAges(int minAge, int maxAge) {
+    	return customerRepository.findCustomersByAgeAndLastName(minAge, maxAge);
+    }
+    
     public Optional<Customer> findById(Long id) {
         return customerRepository.findById(id);
     }
