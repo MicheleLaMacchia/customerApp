@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mlm.customer.CustomerService;
+import com.mlm.customer.dto.CustomerDTO;
 import com.mlm.customer.repository.model.Customer;
 
 @RestController
@@ -29,8 +30,8 @@ public class CustomerController {
     }
 
     @RequestMapping(path = "customers", method = RequestMethod.GET)
-    public ResponseEntity<List<Customer>> getAllCustomers() {
-        List<Customer> customers = customerService.findAll();
+    public ResponseEntity<List<CustomerDTO>> getAllCustomers() {
+        List<CustomerDTO> customers = customerService.findAll();
         return new ResponseEntity<>(customers, HttpStatus.OK);
     }
     

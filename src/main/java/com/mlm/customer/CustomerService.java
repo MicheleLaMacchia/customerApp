@@ -1,11 +1,13 @@
 package com.mlm.customer;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.mlm.customer.dto.CustomerDTO;
 import com.mlm.customer.repository.CustomerRepository;
 import com.mlm.customer.repository.model.Customer;
 
@@ -15,8 +17,17 @@ public class CustomerService {
     @Autowired
     private CustomerRepository customerRepository;
     
-    public List<Customer> findAll() {
-        return customerRepository.findAll();
+    public List<CustomerDTO> findAll() {
+    	
+    	List<Customer> list = customerRepository.findAll();
+    	List<CustomerDTO> listDTO = new ArrayList<CustomerDTO>();
+    	
+    	list.forEach(c -> {
+    		CustomerDTO cDTO = CustomerDTO.fromEntity(c);
+    		listDTO.add(cDTO);
+    	});
+    	
+        return listDTO;
     }
     
     public List<Customer> customFindAll() {
