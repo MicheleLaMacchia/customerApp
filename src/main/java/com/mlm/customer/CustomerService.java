@@ -8,14 +8,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mlm.customer.dto.CustomerDTO;
+import com.mlm.customer.repository.CustomerProductRepository;
 import com.mlm.customer.repository.CustomerRepository;
 import com.mlm.customer.repository.model.Customer;
+import com.mlm.customer.repository.model.Product;
 
 @Service
 public class CustomerService {
     
     @Autowired
     private CustomerRepository customerRepository;
+    @Autowired
+    private CustomerProductRepository customerProductRepository;
     
     public List<CustomerDTO> findAll() {
     	
@@ -23,7 +27,8 @@ public class CustomerService {
     	List<CustomerDTO> listDTO = new ArrayList<CustomerDTO>();
     	
     	list.forEach(c -> {
-    		CustomerDTO cDTO = CustomerDTO.fromEntity(c);
+    		List<Product> products = customerProductRepository.findProductsByCustomerId(c.getId());
+    		CustomerDTO cDTO = CustomerDTO.fromEntity(c, products);
     		listDTO.add(cDTO);
     	});
     	
