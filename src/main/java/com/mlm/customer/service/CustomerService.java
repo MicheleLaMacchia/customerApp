@@ -1,4 +1,4 @@
-package com.mlm.customer;
+package com.mlm.customer.service;
 
 import java.util.ArrayList;
 import java.util.List;

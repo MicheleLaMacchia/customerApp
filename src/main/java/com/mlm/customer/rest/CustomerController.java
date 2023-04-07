@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.mlm.customer.CustomerService;
 import com.mlm.customer.dto.CustomerDTO;
 import com.mlm.customer.repository.model.Customer;
+import com.mlm.customer.service.CustomerService;
 
 @RestController
 @RequestMapping
