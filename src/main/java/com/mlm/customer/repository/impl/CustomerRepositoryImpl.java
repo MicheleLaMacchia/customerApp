@@ -23,7 +23,7 @@ public class CustomerRepositoryImpl implements CustomerCustomRepository {
 	@SuppressWarnings("unchecked")
 	public List<Customer> customFindAllWNativeQuery() {
 		
-		Query query = entityManager.createNativeQuery("select * from Customers", Customer.class);
+		Query query = entityManager.createNativeQuery("select * from customers", Customer.class);
 
 		return query.getResultList();
 	}
