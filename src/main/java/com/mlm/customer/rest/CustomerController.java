@@ -66,6 +66,15 @@ public class CustomerController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+    @RequestMapping(path = "customer-detail/{id}", method = RequestMethod.GET)
+    public ResponseEntity<CustomerDTO> getCustomerByIdWithProducts(@PathVariable Long id) {
+    	CustomerDTO customerDTO = customerService.findByIdWithProducts(id);
+    	if (customerDTO != null) {
+    		return new ResponseEntity<>(customerDTO, HttpStatus.OK);
+    	} else {
+    		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    	}
+    }
 
     @RequestMapping(path = "customer/{id}", method = RequestMethod.PUT)
     public ResponseEntity<Customer> updateCustomer(@PathVariable Long id, @RequestBody Customer customer) {

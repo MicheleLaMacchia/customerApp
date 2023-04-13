@@ -51,6 +51,17 @@ public class CustomerService {
         return customerRepository.findById(id);
     }
     
+    public CustomerDTO findByIdWithProducts(Long id) {
+    	Optional<Customer> customer = customerRepository.findById(id);
+    	if (customer.isEmpty()) {
+			return null;
+		} else {
+    	List<Product> products = customerProductRepository.findProductsByCustomerId(id);
+    	CustomerDTO customerDTO = CustomerDTO.fromEntity(customer.get(), products);
+    	return customerDTO;
+		}
+    }
+    
     public Customer save(Customer customer) {
         return customerRepository.save(customer);
     }
